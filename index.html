@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, iniwtial-scale=1.0">
+    <title>VitalWarrior - AI Health Recognition</title>
+    <meta name="description" content="Advanced facial recognition system for UE students health monitoring">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- LOADING SCREEN -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="warrior-logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2>VitalWarrior</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>Initializing AI Health Recognition...</p>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <header class="main-header" id="mainHeader">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h1 class="brand-text">VitalWarrior</h1>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">
+                        <i class="fas fa-cogs"></i>
+                        <span>Features</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="btn btn-outline" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </button>
+                <button class="btn btn-primary" id="registerBtn">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Register</span>
+                </button>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="hero-particles"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1 class="hero-title">
+                        Advanced <span class="gradient-text">Facial Recognition</span>
+                        <br>Health Monitoring System
+                    </h1>
+                    <p class="hero-description">
+                        Revolutionary AI-powered technology that instantly identifies UE students and monitors 
+                        health conditions through advanced facial recognition and thermal analysis.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3>99.9%</h3>
+                            <p>Accuracy Rate</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>< 2s</h3>
+                            <p>Scan Time</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>24/7</h3>
+                            <p>Monitoring</p>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" id="startScanBtn">
+                            <i class="fas fa-camera"></i>
+                            <span>Start Health Scan</span>
+                        </button>
+                        <button class="btn btn-secondary btn-large">
+                            <i class="fas fa-play"></i>
+                            <span>Watch Demo</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual" data-aos="fade-left">
+                    <div class="scan-interface">
+                        <div class="scan-header">
+                            <h3>Facial Recognition Scanner</h3>
+                            <div class="scan-status">
+                                <span class="status-indicator"></span>
+                                <span>Ready to Scan</span>
+                            </div>
+                        </div>
+                        <div class="scan-area">
+                            <div class="face-outline">
+                                <div class="scan-corners">
+                                    <div class="corner top-left"></div>
+                                    <div class="corner top-right"></div>
+                                    <div class="corner bottom-left"></div>
+                                    <div class="corner bottom-right"></div>
+                                </div>
+                                <div class="face-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="scanning-line"></div>
+                            </div>
+                        </div>
+                        <div class="health-indicators">
+                            <div class="indicator">
+                                <i class="fas fa-thermometer-half"></i>
+                                <span>Temperature</span>
+                                <div class="indicator-value">36.5°C</div>
+                            </div>
+                            <div class="indicator">
+                                <i class="fas fa-heartbeat"></i>
+                                <span>Heart Rate</span>
+                                <div class="indicator-value">72 BPM</div>
+                            </div>
+                            <div class="indicator">
+                                <i class="fas fa-lungs"></i>
+                                <span>Respiratory</span>
+                                <div class="indicator-value">Normal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">About VitalWarrior</h2>
+                    <p class="section-subtitle">
+                        Empowering UE students with cutting-edge health monitoring technology
+                    </p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text" data-aos="fade-right">
+                        <h3>Revolutionizing Campus Health</h3>
+                        <p>
+                            VitalWarrior combines advanced facial recognition technology with AI-powered health 
+                            analysis to provide instant, non-invasive health monitoring for University of the East students.
+                        </p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <i class="fas fa-eye"></i>
+                                <div>
+                                    <h4>Advanced Vision AI</h4>
+                                    <p>State-of-the-art computer vision algorithms for precise facial analysis</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-virus"></i>
+                                <div>
+                                    <h4>Health Detection</h4>
+                                    <p>Identifies symptoms like fever, cough, and respiratory issues</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-database"></i>
+                                <div>
+                                    <h4>Secure Database</h4>
+                                    <p>Protected student data with enterprise-grade security</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual" data-aos="fade-left">
+                        <div class="tech-stack">
+                            <h4>Technology Stack</h4>
+                            <div class="tech-grid">
+                                <div class="tech-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>AI Vision</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fas fa-database"></i>
+                                    <span>Real-time DB</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-html5"></i>
+                                    <span>HTML5</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-css3-alt"></i>
+                                    <span>CSS3</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fab fa-js"></i>
+                                    <span>JavaScript</span>
+                                </div>
+                                <div class="tech-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Security</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Core Features</h2>
+                    <p class="section-subtitle">
+                        Advanced capabilities designed for comprehensive health monitoring
+                    </p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3>Student Identification</h3>
+                        <p>Instantly recognize and verify UE students through advanced facial recognition algorithms</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <h3>Temperature Detection</h3>
+                        <p>Non-contact thermal imaging to detect elevated body temperature and fever symptoms</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-icon">
+                            <i class="fas fa-head-side-cough"></i>
+                        </div>
+                        <h3>Symptom Analysis</h3>
+                        <p>AI-powered detection of visible symptoms including cough, runny nose, and fatigue</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Health Analytics</h3>
+                        <p>Comprehensive health reports and trend analysis for better health management</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Privacy Protection</h3>
+                        <p>End-to-end encryption and secure data handling to protect student information</p>
+                    </div>
+                    <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Cross-Platform</h3>
+                        <p>Seamless experience across desktop, tablet, and mobile devices</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">
+                        Have questions about VitalWarrior? We're here to help!
+                    </p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info" data-aos="fade-right">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@vitalwarrior.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+63 123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>University of the East<br>Manila, Philippines</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" data-aos="fade-left">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>VitalWarrior</h3>
+                    <p>Advanced AI health monitoring for UE students</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 VitalWarrior. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CAMERA MODAL -->
+    <div id="cameraModal" class="modal">
+        <div class="modal-content camera-modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-camera"></i>
+                    Facial Recognition Health Scanner
+                </h2>
+                <button class="modal-close" id="closeCameraModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="camera-container">
+                <video id="cameraFeed" autoplay muted playsinline></video>
+                <canvas id="cameraCanvas" style="display: none;"></canvas>
+                <div class="camera-overlay">
+                    <div class="scan-frame">
+                        <div class="scan-corners">
+                            <div class="corner top-left"></div>
+                            <div class="corner top-right"></div>
+                            <div class="corner bottom-left"></div>
+                            <div class="corner bottom-right"></div>
+                        </div>
+                        <div class="scanning-animation" id="scanningAnimation"></div>
+                    </div>
+                </div>
+                <div class="camera-controls">
+                    <button class="btn btn-primary" id="captureBtn">
+                        <i class="fas fa-camera-retro"></i>
+                        Capture & Analyze
+                    </button>
+                    <button class="btn btn-secondary" id="switchCameraBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        Switch Camera
+                    </button>
+                </div>
+            </div>
+            <div class="scan-results" id="scanResults" style="display: none;">
+                <h3>Health Analysis Results</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <i class="fas fa-user-check"></i>
+                        <span class="result-label">Student ID:</span>
+                        <span class="result-value" id="studentId">--</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-thermometer-half"></i>
+                        <span class="result-label">Temperature:</span>
+                        <span class="result-value" id="temperature">--</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-head-side-cough"></i>
+                        <span class="result-label">Symptoms:</span>
+                        <span class="result-value" id="symptoms">--</span>
+                    </div>
+                </div>
+                <div class="health-status" id="healthStatus">
+                    <div class="status-indicator healthy">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Healthy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content auth-modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login to VitalWarrior
+                </h2>
+                <button class="modal-close" id="closeLoginModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">
+                        <i class="fas fa-envelope"></i>
+                        Email Address
+                    </label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" id="switchToRegister">Register here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- REGISTER MODAL -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content auth-modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-user-plus"></i>
+                    Register for VitalWarrior
+                </h2>
+                <button class="modal-close" id="closeRegisterModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="auth-form" id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="studentId" name="studentId" placeholder="Student ID (UE-XXXXXXXX)" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="registerEmail" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="registerPassword" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the Terms & Conditions
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-user-plus"></i>
+                    Create Account
+                </button>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>w
